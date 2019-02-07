@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void imagePressEvent(QPoint p);
 };
 
 #endif // MAINWINDOW_H
