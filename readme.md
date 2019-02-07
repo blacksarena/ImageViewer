@@ -13,9 +13,10 @@
 | Inherits | QGraphicsView            |
 
 
+
 ##Public Functions
 
-
+|              |  |
 | ------------:|:--------------------------------------- |
 |              | ImageViewer(QWidget *parent = nullptr)  |
 | virtual      | ~ImageViewer()                          |
@@ -29,6 +30,7 @@
 ##Protected Functions
 
 
+|              |  |
 | ------------:|:------------------------------ |
 | virtual void | paintEvent(QPaintEvent *event) |
 
@@ -36,6 +38,7 @@
 ##Signals
 
 
+|              |  |
 | ----:|:---------------------- |
 | void | mousePressed(QPoint p) |
 
