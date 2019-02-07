@@ -9,45 +9,34 @@
 
 
 | Header:  | #include <imageviewer.h> |
-
-|:---------|:-------------------------|
-
+|:-------- |:------------------------ |
 | Inherits | QGraphicsView            |
 
 
 ##Public Functions
 
 
-|-------------:|:----------------------------------------|
-
+| ------------:|:--------------------------------------- |
 |              | ImageViewer(QWidget *parent = nullptr)  |
-
 | virtual      | ~ImageViewer()                          |
-
 | void         | setImage(const QImage &image)           |
-
 | void         | scaleView(qreal factor, QPointF center) |
-
 | virtual void | mousePressEvent(QMouseEvent *event)     |
-
 | virtual void | mouseMoveEvent(QMouseEvent *event)      |
-
 | virtual void | wheelEvent(QWheelEvent *event)          |
 
 
 ##Protected Functions
 
 
-|-------------:|:-------------------------------|
-
+| ------------:|:------------------------------ |
 | virtual void | paintEvent(QPaintEvent *event) |
 
 
 ##Signals
 
 
-|-----:|:-----------------------|
-
+| ----:|:---------------------- |
 | void | mousePressed(QPoint p) |
 
 
