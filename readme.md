@@ -14,7 +14,7 @@
 
 
 
-##Public Functions
+## Public Functions
 
 |              |  |
 | ------------:|:--------------------------------------- |
@@ -27,7 +27,7 @@
 | virtual void | wheelEvent(QWheelEvent *event)          |
 
 
-##Protected Functions
+## Protected Functions
 
 
 |              |  |
@@ -35,7 +35,7 @@
 | virtual void | paintEvent(QPaintEvent *event) |
 
 
-##Signals
+## Signals
 
 
 |              |  |
