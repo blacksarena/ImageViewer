@@ -22,6 +22,7 @@
 | virtual      | ~ImageViewer()                          |
 | void         | setImage(const QImage &image)           |
 | void         | scaleView(qreal factor, QPointF center) |
+| void         | alignCenter()                           |
 | virtual void | mousePressEvent(QMouseEvent *event)     |
 | virtual void | mouseMoveEvent(QMouseEvent *event)      |
 | virtual void | wheelEvent(QWheelEvent *event)          |
@@ -67,6 +68,13 @@ Scales the set image according to the magnification.
 
 
 The magnification is 5 times at maximum, it can not be reduced.
+
+
+## void ImageViewer::alignCenter()
+---
+Set image at widget's center.
+
+If you execution this function, _m_matrix is initialized.
 
 
 ## virtual void ImageViewer::mousePressEvent(QMouseEvent *event)
