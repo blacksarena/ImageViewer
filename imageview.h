@@ -12,9 +12,11 @@ public:
     ImageView(QWidget *parent);
     virtual ~ImageView();
 
+    void alignCenter();
     void setImage( const QImage &image );
     void scaleView( qreal factor, const QPointF &center );
-    virtual void mouseMoveEvent( QMouseEvent *event );
+    virtual void resizeEvent( QResizeEvent *event ) override;
+    virtual void mouseMoveEvent( QMouseEvent *event ) override;
     virtual void mousePressEvent( QMouseEvent *event ) override;
     virtual void wheelEvent( QWheelEvent *event ) override;
 

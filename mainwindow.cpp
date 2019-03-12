@@ -21,6 +21,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    ui->ImageViewer->alignCenter();
+}
+
 void MainWindow::imagePressEvent(QPoint p)
 {
     //qDebug() << "press point: " << p;

@@ -18,6 +18,42 @@ void ImageView::paintEvent( QPaintEvent *event )
     widgetpainter.drawImage( 0, 0, _view_image );
 }
 
+void ImageView::alignCenter()
+{
+    if(_view_image.isNull() == true)
+    {
+        return;
+    }
+
+    // 倍率の計算
+    QSize geometry_size = geometry().size();
+    QSize image_size = _view_image.size();
+    float scale = std::min<float>((float)geometry_size.width() / image_size.width(), (float)geometry_size.height() / image_size.height());
+
+    // 位置の計算
+    float width_offset  = 0;
+    float height_offset = 0;
+    QSize scaled_image_size = image_size * scale;
+    QSize size_diff = geometry_size - scaled_image_size;
+    if(size_diff.width() > size_diff.height())
+    {
+        if(size_diff.width() > 0)
+        {
+            width_offset = size_diff.width()/2.0f;
+        }
+    }
+    else
+    {
+        if(size_diff.height() > 0)
+        {
+            height_offset = size_diff.height()/2.0f;
+        }
+    }
+
+    // 適用
+    _matrix = _matrix.fromTranslate(width_offset, height_offset);
+    _matrix = _matrix.scale(scale, scale);
+}
 
 void ImageView::setImage( const QImage &image )
 {
@@ -32,14 +68,14 @@ void ImageView::scaleView( qreal factor, const QPointF &center )
     factor+=1;//0.9 <-> 1.1
 
     //limit zoom out ---
-    if (_matrix.m11()==1 && factor < 1)
+    if (_matrix.m11() < 1.0 && factor < 1)
     {
         return;
     }
 
-    if (_matrix.m11()*factor<1)
+    if (_matrix.m11() * factor < 1.0)
     {
-        factor = 1/_matrix.m11();
+        factor = 1.0/_matrix.m11();
     }
 
     //limit zoom in ---
@@ -106,6 +142,11 @@ void ImageView::controlImagePosition()
     _matrix_inv = _matrix.inverted();
 
     viewport()->update();
+}
+
+void ImageView::resizeEvent( QResizeEvent *event )
+{
+    alignCenter();
 }
 
 void ImageView::mouseMoveEvent( QMouseEvent *event )
